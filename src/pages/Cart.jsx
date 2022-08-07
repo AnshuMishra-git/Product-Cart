@@ -3,19 +3,16 @@ import { useSelector } from 'react-redux'
 
 function Cart() {
   const cart = useSelector((state) => state.cartData);
-  console.log('Cart-->>>', cart)
   const [cartdata, setCartData] = useState(cart.cart_detail);
   const [total, setToatal] = useState(0)
 
   useEffect(() => {
     setCartData(cart.cart_detail)
-    console.log('cartdata', cartdata);
     let total = 0;
     cartdata.forEach(element => {
       total = total + (element.quantity * element.price)
     });
 
-    console.log('total---->>>>', total);
     setToatal(total)
 
   }, [cart.cart_detail])
